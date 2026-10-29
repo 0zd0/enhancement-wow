@@ -1,5 +1,29 @@
 [project]
 name = "enhancement-wow-forever"
 version = "0.1.0"
-requires-python = ">=3.14"
-dependencies = []
+requires-python = ">=3.13"
+dependencies = [
+    "cryptography>=50.0.2",
+    "mitmproxy>=12.3.1",
+    "protobuf>=7.36.2",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.9",
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+    "mypy>=2.4.1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/proxy"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"

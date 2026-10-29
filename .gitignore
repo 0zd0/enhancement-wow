@@ -1,1 +1,4 @@
-.idea
+.idea/*
+!.idea/vcs.xml
+
+*.mitm
